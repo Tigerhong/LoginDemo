@@ -56,7 +56,6 @@ app.use('/login',router);// 即为为路径 /login 设置路由
 app.use('/register',router);// 即为为路径 /register 设置路由
 app.use('/home',router);// 即为为路径 /home 设置路由
 app.use('/logout',router);// 即为为路径 /logout 设置路由
-
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development

@@ -19,7 +19,7 @@
 </head>
 <body>
 <div class="container">
-    <%=message%>
+    <%- message %>
     <form class="col-sm-offset-4 col-sm-4 form-horizontal" role="form" method="post"
     onsubmit="return false"><!--onsubmit="return false" 防止默认提交
     ，然后在输入信息正确的情况下，通过ajax,把表单信息post到路径/register-->
@@ -60,7 +60,7 @@
                     </div>
                     <div class="form-group">
                         <button type="button" class="btn btn-primary btn-block"
-                                id="register1">注册
+                                id="register">注册
                         </button>
                     </div>
                     <div class="form-group">
@@ -74,4 +74,38 @@
     </form>
 </div>
 </body>
+<script type="text/javascript" src="javascripts/jquery.min.js"></script>
+<script type="text/javascript" src="javascripts/bootstrap.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#login').click(function () {
+            location.href='login';
+        });
+        $('#register').click(function () {
+            let username = $('#username').val();
+            let password1 = $('#password1').val();
+            let password2 = $('#password2').val();
+            if (password1!==password2){
+                $('#password1').css('border','1px solid red');
+                $('#password2').css('border','1px solid red');
+            } else if (password1===password2){
+                var data ={"uname":username,"upwd":password1};
+                $.ajax({
+                    url:'/register',
+                    type:'post',
+                    data:data,
+                    success:function (data,status) {
+                        if (status=='success'){
+                            location.href='login';
+                        }
+                    },
+                    error:function (data,err) {
+                        location.href='register'
+                    }
+                })
+            }
+        })
+    })
+
+</script>
 </html>

@@ -64,32 +64,6 @@
 </div>
 <script type="text/javascript" src="javascripts/jquery.min.js"></script>
 <script type="text/javascript" src="javascripts/bootstrap.min.js"></script>
-<script type="text/javascript">
-    $(function () {
-        $("#reigster").click(function () {
-            location.href="register";
-        });
-
-        $("#login").click(function () {
-            var username=$("#username").val();
-            var password=$("#password").val();
-            var data={"uname":username,"upwd":password};
-            $.ajax({
-                url:'/login',
-                type:'post',
-                data:data,
-                success:function (data,status) {
-                    if (status=='sucess'){
-                        location.href='home';
-                    }
-                }, error: function(data,status){
-                    if(status == 'error'){
-                        location.href = 'login';
-                    }
-                }
-            })
-        })
-    })
-</script>
+<script type="text/javascript" src="business/logid.js"></script>
 </body>
 </html>
